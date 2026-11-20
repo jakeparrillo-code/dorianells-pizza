@@ -1,483 +1,467 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dorianell's — Friday Pizza Drop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F4EFE6;
+      --card: #FAF7F2;
+      --ink: #161513;
+      --ink-muted: #57524A;
+      --bakery-red: #B8332A;
+      --bakery-green: #2B593F;
+      --border: #161513;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 14px 48px;
+      background-color: var(--paper);
+      background-image: radial-gradient(rgba(22, 21, 19, 0.06) 1px, transparent 0);
+      background-size: 18px 18px;
+      color: var(--ink);
+      font-family: 'Courier Prime', monospace;
+      line-height: 1.5;
+    }
+
+    .bakery-box {
+      max-width: 560px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 3px solid var(--border);
+      box-shadow: 7px 7px 0px var(--ink);
+      padding: 26px 22px;
+      position: relative;
+    }
+
+    .inner-border {
+      border: 1.5px dashed rgba(22, 21, 19, 0.35);
+      padding: 22px 18px;
+    }
+
+    .header {
+      text-align: center;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+    }
+
+    .logo-img {
+      max-width: 270px;
+      width: 82%;
+      height: auto;
+      display: block;
+      margin: 0 auto 8px;
+      mix-blend-mode: multiply;
+    }
+
+    .est-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding: 3px 10px;
+      margin-top: 4px;
+    }
+
+    .drop-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.55rem;
+      line-height: 1.15;
+      margin: 14px 0 8px;
+      text-align: center;
+    }
+
+    .ticket-box {
+      background: #EFE9DD;
+      border: 2px solid var(--ink);
+      padding: 14px 16px;
+      margin: 16px 0;
+    }
+
+    .ticket-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--bakery-red);
+      margin-bottom: 4px;
+    }
+
+    .pizza-desc {
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin: 0 0 10px;
+    }
+
+    .pickup-time {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      margin: 0;
+      border-top: 1px dashed rgba(22, 21, 19, 0.3);
+      padding-top: 8px;
+    }
+
+    .slots-banner {
+      text-align: center;
+      margin: 18px 0;
+    }
+
+    .slot-badge {
+      display: inline-block;
+      background: var(--bakery-green);
+      color: #FFF;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 6px 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 2px solid var(--ink);
+    }
+
+    .slot-badge.sold-out {
+      background: var(--bakery-red);
+    }
+
+    .karma-intro {
+      font-size: 0.9rem;
+      background: #FFFDF9;
+      border-left: 4px solid var(--bakery-red);
+      padding: 10px 12px;
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      letter-spacing: 0.04em;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      font-family: 'Courier Prime', monospace;
+      font-size: 1rem;
+      padding: 10px 12px;
+      border: 2px solid var(--ink);
+      background: #FFF;
+      color: var(--ink);
+      margin-bottom: 14px;
+      border-radius: 0;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      background: #FFFDF7;
+      box-shadow: 3px 3px 0px var(--ink);
+    }
+
+    .btn-claim {
+      width: 100%;
+      background: var(--ink);
+      color: var(--card);
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 14px;
+      border: 2px solid var(--ink);
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: transform 0.08s ease;
+    }
+
+    .btn-claim:hover:not(:disabled) {
+      background: var(--bakery-red);
+      border-color: var(--ink);
+    }
+
+    .btn-claim:active:not(:disabled) {
+      transform: translate(2px, 2px);
+    }
+
+    .btn-claim:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .status-msg {
+      margin-top: 14px;
+      padding: 12px;
+      font-weight: 700;
+      text-align: center;
+      border: 2px solid var(--ink);
+      display: none;
+    }
+
+    .status-msg.success {
+      display: block;
+      background: #E3F1E8;
+      color: var(--bakery-green);
+    }
+
+    .status-msg.error {
+      display: block;
+      background: #FBE9E7;
+      color: var(--bakery-red);
+    }
+
+    .karma-wall {
+      margin-top: 28px;
+      border-top: 2px solid var(--ink);
+      padding-top: 18px;
+    }
+
+    .wall-heading {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      margin: 0 0 12px;
+      text-align: center;
+    }
+
+    .karma-item {
+      background: #FFF;
+      border: 1.5px solid var(--ink);
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .karma-slot-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--bakery-red);
+    }
+
+    .karma-neighbor {
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+
+    .karma-pledge-text {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--ink-muted);
+      margin-top: 3px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+    }
+
+    .footer a {
+      color: var(--ink);
+      font-weight: 700;
+    }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Dorianell's — Friday Pizza Drop&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&amp;family=Fraunces:opsz,wght@9..144,700;9..144,900&amp;display=swap" rel="stylesheet"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--paper: #F4EFE6;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--card: #FAF7F2;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--ink: #161513;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--ink-muted: #57524A;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--bakery-red: #B8332A;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--bakery-green: #2B593F;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--border: #161513;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>* {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-sizing: border-box;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px 14px 48px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-color: var(--paper);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-image: radial-gradient(rgba(22, 21, 19, 0.06) 1px, transparent 0);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background-size: 18px 18px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Courier Prime', monospace;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.5;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.bakery-box {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 560px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--card);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 3px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 7px 7px 0px var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 26px 22px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.inner-border {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1.5px dashed rgba(22, 21, 19, 0.35);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 22px 18px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.header {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 2px solid var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding-bottom: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-img {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 270px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 82%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto 8px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>mix-blend-mode: multiply;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.est-tag {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.14em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px solid var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 3px 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 4px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.drop-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Fraunces', serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 900;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.55rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.15;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 14px 0 8px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.ticket-box {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #EFE9DD;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 2px solid var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 14px 16px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 16px 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.ticket-label {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.08em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--bakery-red);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 4px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.pizza-desc {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.02rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 0 10px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.pickup-time {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.88rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--ink-muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px dashed rgba(22, 21, 19, 0.3);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.slots-banner {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 18px 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.slot-badge {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--bakery-green);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #FFF;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.95rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 6px 14px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.05em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 2px solid var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.slot-badge.sold-out {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--bakery-red);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.karma-intro {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #FFFDF9;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-left: 4px solid var(--bakery-red);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>label {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 5px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.04em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>input, select, textarea {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Courier Prime', monospace;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 2px solid var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #FFF;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 14px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>input:focus, select:focus, textarea:focus {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>outline: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #FFFDF7;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 3px 3px 0px var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-claim {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--card);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Fraunces', serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.15rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 14px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 2px solid var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.03em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transition: transform 0.08s ease;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-claim:hover:not(:disabled) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--bakery-red);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-color: var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-claim:active:not(:disabled) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transform: translate(2px, 2px);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-claim:disabled {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>opacity: 0.55;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>cursor: not-allowed;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.status-msg {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 14px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 2px solid var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.status-msg.success {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #E3F1E8;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--bakery-green);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.status-msg.error {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #FBE9E7;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--bakery-red);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.karma-wall {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 28px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-top: 2px solid var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.wall-heading {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: 'Fraunces', serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 0 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.karma-item {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #FFF;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1.5px solid var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.karma-slot-tag {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.72rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--bakery-red);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.karma-neighbor {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.98rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.karma-pledge-text {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-style: italic;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--ink-muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 3px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.footer {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 24px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--ink-muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.footer a {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--ink);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="bakery-box"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="inner-border"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="header"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;img src="dorianells.png" alt="Dorianell's" class="logo-img" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="est-tag"&gt;Neighborhood Oven • Friday Drop&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="loading" style="text-align:center; padding: 20px 0;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Checking the oven...</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="app-content" style="display:none;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1 class="drop-title" id="drop-title"&gt;Friday Night Pizza Drop&lt;/h1&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="ticket-box"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="ticket-label"&gt;On The Peel This Friday:&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="pizza-desc" id="pizza-desc"&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="pickup-time" id="pickup-time"&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="slots-banner"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="slot-badge" id="slot-badge"&gt;Loading slots...&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="claim-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="karma-intro"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;strong&gt;The Only Catch (Good Karma Rule):&lt;/strong&gt; No cash accepted. To claim one of this week's extra pies, pledge one good deed you'll pay forward this week.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;form id="claim-form"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;label for="name"&gt;Your Name&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;input type="text" id="name" placeholder="e.g., Mike S." required /&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;label for="phone"&gt;Mobile Number (for Friday pickup text)&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;input type="tel" id="phone" placeholder="(630) 555-0199" required /&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;label for="karma-select"&gt;Your Good Karma Pledge&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;select id="karma-select" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;option value=""&gt;-- Choose a good deed or write your own --&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;option value="Drop off groceries or donate $10 to the local food pantry"&gt;Donate $10 or drop food at the local pantry&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;option value="Buy coffee for the person behind me in line"&gt;Buy coffee for the person behind me in line&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;option value="Bring in a neighbor's trash cans or clear their walk"&gt;Bring in a neighbor's trash cans / help with yardwork&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;option value="Leave an extra generous tip for a local service worker"&gt;Leave a big tip for a local delivery/service worker&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;option value="CUSTOM"&gt;Write my own Good Karma pledge...&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="custom-karma-wrap" style="display:none;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;label for="custom-karma"&gt;Your Custom Pledge&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;input type="text" id="custom-karma" placeholder="What good deed are you doing this week?" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button type="submit" class="btn-claim" id="submit-btn"&gt;Claim My Friday Pie&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/form&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="status-msg" class="status-msg"&gt;&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="karma-wall"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 class="wall-heading"&gt;This Week's Karma Wall&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div id="karma-list"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p style="text-align:center; font-size:0.88rem; color:var(--ink-muted);"&gt;No pies claimed yet—grab the first slot above!&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="footer"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Baked in the spirit of &lt;a href="https://www.dorianells.com" target="_blank"&gt;Dorianell's&lt;/a&gt; • A project by &lt;a href="https://blog.jakeparrillo.com" target="_blank"&gt;Jake Parrillo&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>// PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW:</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzvKqdwBYC2Ddb9p08nUzjyYyv99ORxKk7em4sjm4pwYAJeAdKvUC_gvcMxj2ktrA/exec';</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>const karmaSelect = document.getElementById('karma-select');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const customKarmaWrap = document.getElementById('custom-karma-wrap');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const customKarmaInput = document.getElementById('custom-karma');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>karmaSelect.addEventListener('change', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (karmaSelect.value === 'CUSTOM') {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>customKarmaWrap.style.display = 'block';</p>
-<p class="p1"><span class="Apple-converted-space">        </span>customKarmaInput.required = true;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>customKarmaWrap.style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">        </span>customKarmaInput.required = false;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>async function loadDropData() {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const res = await fetch(SCRIPT_URL);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const data = await res.json();</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('loading').style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('app-content').style.display = 'block';</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('drop-title').textContent = data.title;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('pizza-desc').textContent = data.description;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('pickup-time').textContent = data.pickup;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>const badge = document.getElementById('slot-badge');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const claimSection = document.getElementById('claim-section');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (data.status !== 'OPEN' || data.remainingSlots &lt;= 0) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>badge.textContent = 'Sold Out For This Friday';</p>
-<p class="p1"><span class="Apple-converted-space">          </span>badge.classList.add('sold-out');</p>
-<p class="p1"><span class="Apple-converted-space">          </span>claimSection.style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>const pieWord = data.remainingSlots === 1 ? 'Pie' : 'Pies';</p>
-<p class="p1"><span class="Apple-converted-space">          </span>badge.textContent = `${data.remainingSlots} of ${data.totalSlots} ${pieWord} Left`;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>badge.classList.remove('sold-out');</p>
-<p class="p1"><span class="Apple-converted-space">          </span>claimSection.style.display = 'block';</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>renderKarmaWall(data.claims);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>} catch (err) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('loading').textContent = 'Could not load oven status. Please refresh.';</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function renderKarmaWall(claims) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const list = document.getElementById('karma-list');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>if (!claims || claims.length === 0) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>list.innerHTML = '&lt;p style="text-align:center; font-size:0.88rem; color:var(--ink-muted);"&gt;No pies claimed yet—grab the first slot above!&lt;/p&gt;';</p>
-<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>list.innerHTML = claims.map((c, idx) =&gt; `</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="karma-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="karma-slot-tag"&gt;Pie #${idx + 1} Claimed&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="karma-neighbor"&gt;${escapeHtml(c.name)}&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="karma-pledge-text"&gt;"${escapeHtml(c.karma)}"&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>`).join('');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function escapeHtml(str) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>return String(str).replace(/[&amp;&lt;&gt;"']/g, m =&gt; ({</p>
-<p class="p1"><span class="Apple-converted-space">        </span>'&amp;': '&amp;amp;', '&lt;': '&amp;lt;', '&gt;': '&amp;gt;', '"': '&amp;quot;', "'": '&amp;#39;'</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}[m]));</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('claim-form').addEventListener('submit', async (e) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>e.preventDefault();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const btn = document.getElementById('submit-btn');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const statusMsg = document.getElementById('status-msg');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>const name = document.getElementById('name').value.trim();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const phone = document.getElementById('phone').value.trim();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const karma = karmaSelect.value === 'CUSTOM'</p>
-<p class="p1"><span class="Apple-converted-space">        </span>? customKarmaInput.value.trim()</p>
-<p class="p1"><span class="Apple-converted-space">        </span>: karmaSelect.value;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn.disabled = true;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>btn.textContent = 'Locking in your pie...';</p>
-<p class="p1"><span class="Apple-converted-space">      </span>statusMsg.className = 'status-msg';</p>
-<p class="p1"><span class="Apple-converted-space">      </span>statusMsg.style.display = 'none';</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>try {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const res = await fetch(SCRIPT_URL, {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>method: 'POST',</p>
-<p class="p1"><span class="Apple-converted-space">          </span>body: JSON.stringify({ name, phone, karma })</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const result = await res.json();</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (result.success) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>statusMsg.textContent = result.message;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>statusMsg.classList.add('success');</p>
-<p class="p1"><span class="Apple-converted-space">          </span>document.getElementById('claim-form').reset();</p>
-<p class="p1"><span class="Apple-converted-space">          </span>customKarmaWrap.style.display = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">          </span>await loadDropData();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>statusMsg.textContent = result.message;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>statusMsg.classList.add('error');</p>
-<p class="p1"><span class="Apple-converted-space">          </span>await loadDropData();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>} catch (err) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>statusMsg.textContent = 'Network error. Please try again.';</p>
-<p class="p1"><span class="Apple-converted-space">        </span>statusMsg.classList.add('error');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>} finally {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>btn.disabled = false;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>btn.textContent = 'Claim My Friday Pie';</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>loadDropData();</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+
+  <div class="bakery-box">
+    <div class="inner-border">
+      <div class="header">
+        <img src="dorianells.png" alt="Dorianell's" class="logo-img" />
+        <div class="est-tag">Neighborhood Oven • Friday Drop</div>
+      </div>
+
+      <div id="loading" style="text-align:center; padding: 20px 0;">
+        Checking the oven...
+      </div>
+
+      <div id="app-content" style="display:none;">
+        <h1 class="drop-title" id="drop-title">Friday Night Pizza Drop</h1>
+
+        <div class="ticket-box">
+          <div class="ticket-label">On The Peel This Friday:</div>
+          <p class="pizza-desc" id="pizza-desc"></p>
+          <p class="pickup-time" id="pickup-time"></p>
+        </div>
+
+        <div class="slots-banner">
+          <span class="slot-badge" id="slot-badge">Loading slots...</span>
+        </div>
+
+        <div id="claim-section">
+          <div class="karma-intro">
+            <strong>The Only Catch (Good Karma Rule):</strong> No cash accepted. To claim one of this week's extra pies, pledge one good deed you'll pay forward this week.
+          </div>
+
+          <form id="claim-form">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="e.g., Mike S." required />
+
+            <label for="phone">Mobile Number (for Friday pickup text)</label>
+            <input type="tel" id="phone" placeholder="(630) 555-0199" required />
+
+            <label for="karma-select">Your Good Karma Pledge</label>
+            <select id="karma-select" required>
+              <option value="">-- Choose a good deed or write your own --</option>
+              <option value="Drop off groceries or donate $10 to the local food pantry">Donate $10 or drop food at the local pantry</option>
+              <option value="Buy coffee for the person behind me in line">Buy coffee for the person behind me in line</option>
+              <option value="Bring in a neighbor's trash cans or clear their walk">Bring in a neighbor's trash cans / help with yardwork</option>
+              <option value="Leave an extra generous tip for a local service worker">Leave a big tip for a local delivery/service worker</option>
+              <option value="CUSTOM">Write my own Good Karma pledge...</option>
+            </select>
+
+            <div id="custom-karma-wrap" style="display:none;">
+              <label for="custom-karma">Your Custom Pledge</label>
+              <input type="text" id="custom-karma" placeholder="What good deed are you doing this week?" />
+            </div>
+
+            <button type="submit" class="btn-claim" id="submit-btn">Claim My Friday Pie</button>
+          </form>
+        </div>
+
+        <div id="status-msg" class="status-msg"></div>
+
+        <div class="karma-wall">
+          <h2 class="wall-heading">This Week's Karma Wall</h2>
+          <div id="karma-list">
+            <p style="text-align:center; font-size:0.88rem; color:var(--ink-muted);">No pies claimed yet—grab the first slot above!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        Baked in the spirit of <a href="https://www.dorianells.com" target="_blank">Dorianell's</a> • A project by <a href="https://blog.jakeparrillo.com" target="_blank">Jake Parrillo</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW:
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzvKqdwBYC2Ddb9p08nUzjyYyv99ORxKk7em4sjm4pwYAJeAdKvUC_gvcMxj2ktrA/exec';
+
+    const karmaSelect = document.getElementById('karma-select');
+    const customKarmaWrap = document.getElementById('custom-karma-wrap');
+    const customKarmaInput = document.getElementById('custom-karma');
+
+    karmaSelect.addEventListener('change', () => {
+      if (karmaSelect.value === 'CUSTOM') {
+        customKarmaWrap.style.display = 'block';
+        customKarmaInput.required = true;
+      } else {
+        customKarmaWrap.style.display = 'none';
+        customKarmaInput.required = false;
+      }
+    });
+
+    async function loadDropData() {
+      try {
+        const res = await fetch(SCRIPT_URL);
+        const data = await res.json();
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('app-content').style.display = 'block';
+
+        document.getElementById('drop-title').textContent = data.title;
+        document.getElementById('pizza-desc').textContent = data.description;
+        document.getElementById('pickup-time').textContent = data.pickup;
+
+        const badge = document.getElementById('slot-badge');
+        const claimSection = document.getElementById('claim-section');
+
+        if (data.status !== 'OPEN' || data.remainingSlots <= 0) {
+          badge.textContent = 'Sold Out For This Friday';
+          badge.classList.add('sold-out');
+          claimSection.style.display = 'none';
+        } else {
+          const pieWord = data.remainingSlots === 1 ? 'Pie' : 'Pies';
+          badge.textContent = `${data.remainingSlots} of ${data.totalSlots} ${pieWord} Left`;
+          badge.classList.remove('sold-out');
+          claimSection.style.display = 'block';
+        }
+
+        renderKarmaWall(data.claims);
+      } catch (err) {
+        document.getElementById('loading').textContent = 'Could not load oven status. Please refresh.';
+      }
+    }
+
+    function renderKarmaWall(claims) {
+      const list = document.getElementById('karma-list');
+      if (!claims || claims.length === 0) {
+        list.innerHTML = '<p style="text-align:center; font-size:0.88rem; color:var(--ink-muted);">No pies claimed yet—grab the first slot above!</p>';
+        return;
+      }
+
+      list.innerHTML = claims.map((c, idx) => `
+        <div class="karma-item">
+          <div class="karma-slot-tag">Pie #${idx + 1} Claimed</div>
+          <div class="karma-neighbor">${escapeHtml(c.name)}</div>
+          <div class="karma-pledge-text">"${escapeHtml(c.karma)}"</div>
+        </div>
+      `).join('');
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[m]));
+    }
+
+    document.getElementById('claim-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const statusMsg = document.getElementById('status-msg');
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const karma = karmaSelect.value === 'CUSTOM'
+        ? customKarmaInput.value.trim()
+        : karmaSelect.value;
+
+      btn.disabled = true;
+      btn.textContent = 'Locking in your pie...';
+      statusMsg.className = 'status-msg';
+      statusMsg.style.display = 'none';
+
+      try {
+        const res = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          body: JSON.stringify({ name, phone, karma })
+        });
+        const result = await res.json();
+
+        if (result.success) {
+          statusMsg.textContent = result.message;
+          statusMsg.classList.add('success');
+          document.getElementById('claim-form').reset();
+          customKarmaWrap.style.display = 'none';
+          await loadDropData();
+        } else {
+          statusMsg.textContent = result.message;
+          statusMsg.classList.add('error');
+          await loadDropData();
+        }
+      } catch (err) {
+        statusMsg.textContent = 'Network error. Please try again.';
+        statusMsg.classList.add('error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Claim My Friday Pie';
+      }
+    });
+
+    loadDropData();
+  </script>
 </body>
 </html>
