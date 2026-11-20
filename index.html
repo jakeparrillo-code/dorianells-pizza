@@ -388,7 +388,7 @@
           badge.classList.add('sold-out');
           claimSection.style.display = 'none';
         } else {
-          const pieWord = data.remainingSlots === 1 ? 'Pie' : 'Pies';
+          const pieWord = data.remainingSlots === 1 ? 'Pair of Pies' : 'Pairs of Pies';
           badge.textContent = `${data.remainingSlots} of ${data.totalSlots} ${pieWord} Left to Be Claimed`;
           badge.classList.remove('sold-out');
           claimSection.style.display = 'block';
